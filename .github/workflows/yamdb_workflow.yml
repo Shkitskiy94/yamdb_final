@@ -46,6 +46,7 @@ jobs:
           uses: docker/build-push-action@v2 
           with:
             push: true
+            context: api_yamdb/
             tags: shkitskiy/api_yamdb:latest
   deploy:
       runs-on: ubuntu-latest
