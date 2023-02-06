@@ -3,7 +3,6 @@ import datetime as dt
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from rest_framework import serializers
-
 from reviews.models import Category, Comments, Genre, Review, Title
 from users.models import User
 from users.validators import username_me
@@ -28,7 +27,7 @@ class SignUpSerializer(serializers.Serializer):
             raise serializers.ValidationError(
                 'Запрещено использовать "me" в качестве имени пользователя'
             )
-        elif User.objects.filter(username=value).exists():
+        if User.objects.filter(username=value).exists():
             raise serializers.ValidationError(
                 'Данный username (имя) занято, '
                 'используйте другое '
