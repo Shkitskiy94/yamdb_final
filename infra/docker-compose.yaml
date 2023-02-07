@@ -4,12 +4,12 @@ services:
   db:
     image: postgres:13.0-alpine
     volumes:
-      - data-volume:/var/lib/postgresql/data/
+      - /var/lib/postgresql/data/
     env_file:
       - ./.env
 
   web:
-    image: shkitskiy/api_yamdb
+    image: docker1984dp/yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -31,6 +31,5 @@ services:
       - web
 
 volumes:
-  data-volume:
   static_value:
   media_value:
